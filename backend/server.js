@@ -2,7 +2,12 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import Enquiry from "./models/Enquiry.js";
+import categoryRoutes from "./routes/categoryRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
+import enquiryRoutes from "./routes/enquiryRoutes.js";
+import blogRoutes from "./routes/blogRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js"
+
 
 dotenv.config();
 
@@ -15,16 +20,13 @@ app.use(express.json());
 
 
 
-app.post("/api/enquiry", async (req, res) => {
-  try {
-    const { name, email, phone, message } = req.body;
-    const newEnquiry = new Enquiry({ name, email, phone, message });
-    await newEnquiry.save();
-    res.status(201).json({ success: true, message: "Enquiry submitted successfully!" });
-  } catch (err) {
-    res.status(500).json({ success: false, message: "Error submitting enquiry", error: err });
-  }
-});
+app.use("/api/enquiries", enquiryRoutes);
+
+app.use("/api/categories", categoryRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/blogs", blogRoutes);
+app.use("/api/admin", adminRoutes);
+
 
 
 // Sample route
