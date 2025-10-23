@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import './Hero.css';
 
-const Hero = () => {
+const Hero = ({onInquiryClick}) => {
   // Variants for even faster, more concise entry
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -92,7 +92,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center overflow-hidden bg-primary">
+    <section  className="relative min-h-[85vh] md:min-h-[80vh] flex items-center overflow-hidden bg-primary">
       {/* Business-centric Background Image with EXTREMELY Dark Gradient Overlay */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat pointer-events-none animate-bg-zoom"
@@ -136,13 +136,13 @@ const Hero = () => {
 
           {/* Call to Action */}
           <motion.div variants={itemVariants} className="mb-12">
-            <a
+            <button onClick={onInquiryClick}
               href="#contact"
               className="inline-flex items-center bg-secondary text-primary px-7 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all duration-300 ease-in-out shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-secondary focus:ring-offset-primary group"
             >
               Get a Free Consultation
               <svg className="ml-1.5 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-            </a>
+            </button>
           </motion.div>
         </div>
 

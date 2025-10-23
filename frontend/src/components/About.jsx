@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import InquiryModal from './InquiryModal';
 
 const About = () => {
+
+  
+
   return (
     <section id="about" className="relative py-16  md:py-24 bg-background overflow-hidden">
       {/* Background Gradients/Shapes - Colors directly from theme */}

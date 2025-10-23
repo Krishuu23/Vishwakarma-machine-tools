@@ -6,18 +6,23 @@ import Blogs from "./components/Blogs";
 import Machines from "./components/Machines";
 import Enquiry from "./components/Enquiry";
 import Footer from "./components/Footer";
+import InquiryModal from "./components/InquiryModal";
+import { useState } from "react";
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      <Navbar />
-      <Hero />
+      <Navbar onInquiryClick={() => setIsModalOpen(true)}/>
+      <Hero onInquiryClick={() => setIsModalOpen(true)}/>
       <About />
       <Machines/>
-      <Products />
+      <Products onInquiryClick={() => setIsModalOpen(true)} />
       <Blogs />
       <Enquiry />
       <Footer />
+
+      <InquiryModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }

@@ -42,7 +42,7 @@ const Machines = () => {
   ];
 
   return (
-    <section id="machines" className="relative py-10 md:py-16 bg-background overflow-hidden text-text-primary"> {/* Reduced section padding */}
+    <section  className="relative py-10 md:py-16 bg-background overflow-hidden text-text-primary"> {/* Reduced section padding */}
       {/* Subtle, integrated background elements (keep dimensions to not consume too much space) */}
       <div className="absolute top-1/4 left-0 w-48 h-48 bg-primary-light rounded-full mix-blend-multiply opacity-10 blur-3xl animate-blob-1"></div> {/* Smaller */}
       <div className="absolute bottom-1/4 right-0 w-48 h-48 bg-secondary rounded-full mix-blend-multiply opacity-10 blur-3xl animate-blob-2"></div> {/* Smaller */}

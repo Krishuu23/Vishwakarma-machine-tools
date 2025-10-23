@@ -19,8 +19,7 @@ const Enquiry = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // In a real application, you would send this data to an API
-    alert('Thank you for your inquiry! We will get back to you soon.');
+    alert('Thank you for your enquiry! We will get back to you soon.');
     setFormData({
       name: '',
       email: '',
@@ -30,109 +29,106 @@ const Enquiry = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-text-primary flex items-center justify-center p-4 sm:p-6 lg:p-8 animate-fade-in">
-      <div className="relative w-full max-w-2xl bg-surface rounded-3xl shadow-xl overflow-hidden md:flex md:flex-row-reverse md:items-stretch group">
-        {/* Background "blob" or abstract shape for visual interest */}
-        <div className="absolute inset-0 bg-primary-light opacity-5 animate-pulse-slow pointer-events-none rounded-3xl"></div>
-        <div className="absolute -top-10 -left-10 w-48 h-48 bg-secondary opacity-5 rounded-full filter blur-3xl animate-float-slow group-hover:scale-110 transition-transform duration-500 ease-in-out"></div>
-        <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary opacity-5 rounded-full filter blur-3xl animate-float-fast group-hover:scale-105 transition-transform duration-500 ease-in-out"></div>
-
-        {/* Decorative right section for larger screens */}
-        <div className="hidden md:flex md:w-1/3 bg-primary p-6 lg:p-8 text-surface flex-col justify-between relative overflow-hidden rounded-r-3xl">
-          <div className="absolute inset-0 bg-dot-pattern opacity-10 animate-background-pan"></div>
-          <div className="relative z-10">
-            <h2 className="text-3xl font-bold mb-4 leading-tight animate-fade-in-delay-100">
-              Let's Connect
-            </h2>
-            <p className="text-primary-light text-lg animate-fade-in-delay-200">
-              We're eager to hear from you. Send us a message and we'll be in touch!
-            </p>
+    <div id='enquiry' className="min-h-screen bg-background text-text-primary flex items-center justify-center p-4 sm:p-6 lg:p-8"> {/* Plain background */}
+      <div className="relative z-10 w-full max-w-3xl bg-surface rounded-xl shadow-2xl overflow-hidden animate-fade-in-delay-fast">
+        <div className="md:flex">
+          {/* Left Section - Plain Dark */}
+          <div className="md:w-1/2 p-6 lg:p-8 bg-primary flex flex-col justify-center text-surface relative rounded-l-xl"> {/* No dot pattern, no overflow hidden here */}
+            <div className="relative z-10 text-center md:text-left">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-3 leading-tight text-secondary animate-fade-in-up">
+                Enquire Today
+              </h2>
+              <p className="text-white text-base mb-6 animate-fade-in-delay-200">
+                Let us know how we can assist you.
+              </p>
+              <div className="space-y-2 text-sm text-white animate-fade-in-delay-400">
+                <div className="flex items-center justify-center md:justify-start">
+                  <svg className="w-4 h-4 mr-2 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                  <a href="mailto:info@yourcompany.com" className="hover:underline">info@yourcompany.com</a>
+                </div>
+                <div className="flex items-center justify-center md:justify-start">
+                  <svg className="w-4 h-4 mr-2  text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74A1 1 0 0118 16.847V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                  <a href="tel:+1234567890" className="hover:underline">+1 234 567 8900</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="relative z-10 mt-auto text-sm text-primary-light opacity-80 animate-fade-in-delay-400">
-            <p>&copy; 2023 Your Company</p>
+
+          {/* Right Section - Form */}
+          <div className="md:w-1/2 p-6 lg:p-8">
+            <h3 className="text-2xl sm:text-3xl font-semibold text-primary mb-6 animate-fade-in-up">
+              Send an Inquiry
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label htmlFor="name" className="sr-only">Your Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2.5 border border-border rounded-lg bg-surface-light text-text-primary placeholder:text-text-secondary/70
+                             focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-300 ease-in-out shadow-sm"
+                  placeholder="Your Name"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="sr-only">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2.5 border border-border rounded-lg bg-surface-light text-text-primary placeholder:text-text-secondary/70
+                             focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-300 ease-in-out shadow-sm"
+                  placeholder="Email Address"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="sr-only">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required // Phone number is now required
+                  className="w-full px-4 py-2.5 border border-border rounded-lg bg-surface-light text-text-primary placeholder:text-text-secondary/70
+                             focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-300 ease-in-out shadow-sm"
+                  placeholder="Phone Number"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="sr-only">Your Inquiry</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows="4"
+                  className="w-full px-4 py-2.5 border border-border rounded-lg bg-surface-light text-text-primary placeholder:text-text-secondary/70
+                             focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-300 ease-in-out shadow-sm resize-y"
+                  placeholder="Tell us about your inquiry..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-secondary text-white font-medium py-2.5 px-6 rounded-3xl shadow-md hover:bg-primary transition duration-300 ease-in-out transform hover:-translate-y-0.5
+                           focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-surface"
+              >
+                Send Inquiry
+              </button>
+            </form>
           </div>
-        </div>
-
-        {/* Form section */}
-        <div className="w-full md:w-2/3 p-6 sm:p-8 lg:p-10 relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-primary mb-6 animate-fade-in-up">
-            Enquire Now
-          </h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
-                Your Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition duration-300 ease-in-out text-text-primary bg-surface-light placeholder:text-text-secondary/60
-                           shadow-sm hover:border-primary-light"
-                placeholder="John Doe"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-text-secondary mb-2">
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition duration-300 ease-in-out text-text-primary bg-surface-light placeholder:text-text-secondary/60
-                           shadow-sm hover:border-primary-light"
-                placeholder="john.doe@example.com"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-text-secondary mb-2">
-                Phone Number (Optional)
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition duration-300 ease-in-out text-text-primary bg-surface-light placeholder:text-text-secondary/60
-                           shadow-sm hover:border-primary-light"
-                placeholder="+1 234 567 8900"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-text-secondary mb-2">
-                Your Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows="5"
-                className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition duration-300 ease-in-out text-text-primary bg-surface-light placeholder:text-text-secondary/60
-                           shadow-sm hover:border-primary-light resize-y"
-                placeholder="Tell us more about what you need..."
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-secondary text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-primary transition duration-300 ease-in-out transform hover:-translate-y-0.5 hover:scale-101 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-surface"
-            >
-              Send Inquiry
-            </button>
-          </form>
         </div>
       </div>
     </div>
