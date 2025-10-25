@@ -1,4 +1,5 @@
 import express from "express";
+import { protectAdmin } from "../middleware/authMiddleware.js";
 import { addEnquiry, getAllEnquiries } from "../controllers/enquiryController.js";
 
 const router = express.Router();
@@ -7,6 +8,6 @@ const router = express.Router();
 router.post("/", addEnquiry);
 
 // Route to get all enquiries (admin)
-router.get("/", getAllEnquiries);
+router.get("/", protectAdmin, getAllEnquiries);
 
 export default router;

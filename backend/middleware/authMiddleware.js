@@ -1,16 +1,28 @@
 import jwt from "jsonwebtoken";
-const JWT_SECRET = "your_secret_key";
+import dotenv from "dotenv";
 
-export const protect = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
+dotenv.config(); // Load environment variables
 
-  if (!token) return res.status(401).json({ message: "No token, authorization denied" });
+const JWT_SECRET = process.env.JWT_SECRET;
 
+// Middleware to protect admin routes
+export const protectAdmin = (req, res, next) => {
   try {
+    const token = req.headers.authorization?.split(" ")[1];
+
+    if (!token) {
+      return res.status(401).json({ message: "No token provided, authorization denied" });
+    }
+
+    // Verify token
     const decoded = jwt.verify(token, JWT_SECRET);
+
+    // Attach decoded data (admin ID) to request
     req.admin = decoded;
+
     next();
   } catch (error) {
-    res.status(401).json({ message: "Invalid token" });
+    console.error("Auth error:", error.message);
+    return res.status(401).json({ message: "Invalid or expired token" });
   }
 };

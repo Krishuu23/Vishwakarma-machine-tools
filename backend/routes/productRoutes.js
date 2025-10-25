@@ -1,5 +1,6 @@
 // backend/routes/productRoutes.js
 import express from "express";
+import { protectAdmin } from "../middleware/authMiddleware.js";
 import {
   createProduct,
   getProducts,
@@ -18,8 +19,8 @@ router.get("/", getProducts);
 router.get("/:id", getProductById);
 
 // Protected (admin) - add auth middleware when ready
-router.post("/", /* auth, */ createProduct);
-router.put("/:id", /* auth, */ updateProduct);
-router.delete("/:id", /* auth, */ deleteProduct);
+router.post("/", protectAdmin , createProduct);
+router.put("/:id", protectAdmin, updateProduct);
+router.delete("/:id", protectAdmin, deleteProduct);
 
 export default router;
