@@ -11,7 +11,7 @@ const Footer = () => {
             <h3 className="text-2xl font-bold text-surface mb-0">Vishwakarma</h3> {/* Smaller */}
             <p className="text-lg text-secondary mb-3">MACHINE TOOLS</p> {/* Smaller */}
             <p className="text-xs leading-relaxed text-surface/70"> {/* Smaller text, slightly less opacity */}
-              Experts in Flexible Packaging, Machine Manufacturing, Roto Gravure, Cylinder Manufacture & Maintenance.
+              Experts in Flexible Packaging, Precision Machine Manufacturing, efficient bulk production and end-to-end printing & packaging project consultancy
             </p>
           </div>
 
@@ -25,21 +25,21 @@ const Footer = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <address className="not-italic text-sm text-surface/80"> {/* Smaller text */}
-                  125-126, Industrial Area, Rao, Indore, <br/>
-                  Madhya Pradesh 453331, India
+                  Khasra No. 47/1/2, Behind L.G. Academy, CAT road Rau <br />
+Dist Indore - 453331.(M.P.)
                 </address>
               </li>
               <li className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"> {/* Smaller icon */}
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.135l-2.54 1.71a11.02 11.02 0 005.581 5.581l1.71-2.54a1 1 0 011.135-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href="tel:+917312856936" className="hover:text-secondary transition-colors duration-300 text-sm">Ph. 0731-2856936</a> {/* Smaller text */}
+                <a href="tel:+917312856936" className="hover:text-secondary transition-colors duration-300 text-sm">Mob. 9826518262 </a> {/* Smaller text */}
               </li>
               <li className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"> {/* Smaller icon */}
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 6h.01M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:info@vishwakarmamachinetools.com" className="hover:text-secondary transition-colors duration-300 text-sm">info@vishwakarmamachinetools.com</a> {/* Smaller text */}
+                <a href="mailto:info@vishwakarmamachinetools.com" className="hover:text-secondary transition-colors duration-300 text-sm">vmt_tools@yahoo.com</a> {/* Smaller text */}
               </li>
             </ul>
           </div>

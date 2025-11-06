@@ -1,12 +1,15 @@
 import express from "express";
-import { registerAdmin, loginAdmin } from "../controllers/adminController.js";
+import { loginAdmin, refreshToken, logoutAdmin } from "../controllers/adminController.js";
 
 const router = express.Router();
 
-// POST - Register (only one time for initial setup)
-router.post("/register", registerAdmin);
-
-// POST - Login
+// ✅ Admin Login - returns access + refresh token
 router.post("/login", loginAdmin);
+
+// ✅ When access token expires → generate new one using refresh token
+router.get("/refresh", refreshToken);
+
+// ✅ Logout admin - clears refresh token cookie
+router.post("/logout", logoutAdmin);
 
 export default router;

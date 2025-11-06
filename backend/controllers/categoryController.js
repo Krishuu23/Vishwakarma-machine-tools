@@ -3,7 +3,7 @@ import Category from "../models/Category.js";
 // ✅ Create a new category
 export const createCategory = async (req, res) => {
   try {
-    const { name, description } = req.body;
+    const { name } = req.body;
 
     // Check if category already exists
     const existingCategory = await Category.findOne({ name });
@@ -11,7 +11,7 @@ export const createCategory = async (req, res) => {
       return res.status(400).json({ success: false, message: "Category already exists" });
     }
 
-    const newCategory = new Category({ name, description });
+    const newCategory = new Category({ name });
     await newCategory.save();
 
     res.status(201).json({
@@ -34,27 +34,8 @@ export const getCategories = async (req, res) => {
   }
 };
 
-// ✅ Update category
-export const updateCategory = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { name, description } = req.body;
 
-    const updatedCategory = await Category.findByIdAndUpdate(
-      id,
-      { name, description },
-      { new: true } // return updated doc
-    );
 
-    if (!updatedCategory) {
-      return res.status(404).json({ success: false, message: "Category not found" });
-    }
-
-    res.status(200).json({ success: true, message: "Category updated", data: updatedCategory });
-  } catch (error) {
-    res.status(500).json({ success: false, message: "Server error", error });
-  }
-};
 
 // ✅ Delete category
 export const deleteCategory = async (req, res) => {

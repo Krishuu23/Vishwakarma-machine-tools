@@ -86,13 +86,13 @@ const Hero = ({onInquiryClick}) => {
       }
     };
 
-    if (countRef1.current) animateCount(countRef1, 45);
-    if (countRef2.current) animateCount(countRef2, 100);
+    if (countRef1.current) animateCount(countRef1, 30);
+    if (countRef2.current) animateCount(countRef2, 10000);
     if (countRef3.current) animateCount(countRef3, 99);
   }, []);
 
   return (
-    <section  className="relative min-h-[85vh] md:min-h-[80vh] flex items-center overflow-hidden bg-primary">
+    <section id="home"  className="relative min-h-[85vh] md:min-h-[80vh] flex items-center overflow-hidden bg-primary">
       {/* Business-centric Background Image with EXTREMELY Dark Gradient Overlay */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat pointer-events-none animate-bg-zoom"
@@ -131,7 +131,11 @@ const Hero = ({onInquiryClick}) => {
             className="text-sm md:text-base font-light max-w-md mb-8 opacity-90 leading-relaxed drop-shadow-sm" // Reduced paragraph size
             variants={itemVariants}
           >
-            Your partner for <span className="text-secondary font-medium">precision manufacturing</span>, <span className="text-secondary font-medium">flexible packaging</span>, and <span className="text-secondary font-medium">efficient bulk production</span>.
+            Your partner for <span className="text-secondary font-medium">precision manufacturing</span>,
+<span className="text-secondary font-medium"> flexible packaging</span>,
+<span className="text-secondary font-medium"> efficient bulk production</span>,
+and <span className="text-secondary font-medium"> printing & packaging project consultancy</span>.
+
           </motion.p>
 
           {/* Call to Action */}
@@ -143,6 +147,13 @@ const Hero = ({onInquiryClick}) => {
               Get a Free Consultation
               <svg className="ml-1.5 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
             </button>
+
+            <a
+    href="/VMT BROCHURE.pdf" // PDF file in public folder
+    download="VMT BROCHURE.pdf"
+    className="inline-flex items-center ml-8 bg-secondary text-primary px-7 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all duration-300 ease-in-out shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-secondary focus:ring-offset-primary group">
+     Download Brochure
+  </a>
           </motion.div>
         </div>
 
@@ -166,7 +177,7 @@ const Hero = ({onInquiryClick}) => {
           >
             <p className="text-3xl font-extrabold text-secondary leading-none mb-0.5" ref={countRef1}>0+</p> {/* Smaller text */}
             <p className="text-sm font-semibold text-surface">Years of Expertise</p>
-            <p className="mt-0.5 text-xs text-surface opacity-60">Innovating since 1978.</p>
+            <p className="mt-0.5 text-xs text-surface opacity-60">Innovating since 1990.</p>
           </motion.div>
 
           <motion.div

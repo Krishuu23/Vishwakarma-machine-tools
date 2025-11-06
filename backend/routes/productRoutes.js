@@ -1,26 +1,36 @@
-// backend/routes/productRoutes.js
 import express from "express";
 import { protectAdmin } from "../middleware/authMiddleware.js";
 import {
   createProduct,
   getProducts,
-  getProductById,
-  updateProduct,
+  getProductsByCategory,
   deleteProduct
 } from "../controllers/productController.js";
-
-// import auth middleware later and use for protected routes
-// import auth from "../middleware/authMiddleware.js";
+import createUpload from "../middleware/upload.js";
 
 const router = express.Router();
+const uploadProductImage = createUpload("products");
 
-// Public
+/**
+ * 🟢 Public Routes
+ */
+
+// Get all products
 router.get("/", getProducts);
-router.get("/:id", getProductById);
 
-// Protected (admin) - add auth middleware when ready
-router.post("/", protectAdmin , createProduct);
-router.put("/:id", protectAdmin, updateProduct);
+// Get products by category
+router.get("/category/:categoryId", getProductsByCategory);
+
+
+/**
+ * 🔒 Admin-Protected Routes
+ * (use protectAdmin for these)
+ */
+
+// Create new product
+router.post("/", protectAdmin,uploadProductImage.single("image"), createProduct);
+
+// Delete a product
 router.delete("/:id", protectAdmin, deleteProduct);
 
 export default router;

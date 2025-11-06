@@ -3,113 +3,97 @@ import Product from "../models/Product.js";
 import Category from "../models/Category.js";
 
 /**
- * Create a new product
+ * ✅ Create a new product
  * POST /api/products
  */
 export const createProduct = async (req, res) => {
   try {
-    const { name, description, price, image, category } = req.body;
+    const { name, description, category } = req.body;
 
-    // optional: check required fields
+    // ✅ Cloudinary URL
+    const imageUrl = req.file?.path;
+
     if (!name || !category) {
-      return res.status(400).json({ success: false, message: "Name and category are required." });
+      return res.status(400).json({
+        success: false,
+        message: "Name and category are required.",
+      });
     }
 
-    // validate category exists (good practice)
+    // ✅ Check if category exists
     const cat = await Category.findById(category);
-    if (!cat) return res.status(400).json({ success: false, message: "Invalid category ID." });
+    if (!cat) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid category ID.",
+      });
+    }
 
-    const product = new Product({ name, description, price, image, category });
+    // ✅ Create Product with Image URL
+    const product = new Product({
+      name,
+      description,
+      image: imageUrl || null, // ✅ Cloudinary URL stored
+      category,
+    });
+
     await product.save();
 
-    // populate category for response
-    const populated = await product.populate("category").execPopulate?.() ?? await Product.findById(product._id).populate("category");
+    // ✅ Populate category field in response
+    const populatedProduct = await Product.findById(product._id).populate(
+      "category",
+      "name"
+    );
 
-    return res.status(201).json({ success: true, product: populated });
+    return res.status(201).json({
+      success: true,
+      message: "Product created successfully",
+      data: populatedProduct,
+    });
   } catch (err) {
     console.error("createProduct error:", err);
-    return res.status(500).json({ success: false, message: "Server error", error: err.message });
+    return res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
   }
 };
 
+/** * ✅ Get all products * GET /api/products */ export const getProducts = async (req, res) => { try { const products = await Product.find() .populate("category", "name") .sort({ createdAt: -1 }); return res.status(200).json({ success: true, count: products.length, data: products }); } catch (err) { console.error("getProducts error:", err); return res.status(500).json({ success: false, message: "Server error", error: err.message }); } };
+
 /**
- * Get all products (optionally filter by category via query ?category=<id>)
- * GET /api/products
+ * ✅ Get products by category
+ * GET /api/products/category/:categoryId
  */
-export const getProducts = async (req, res) => {
+export const getProductsByCategory = async (req, res) => {
   try {
-    const { category, q } = req.query;
-    const filter = {};
+    const { categoryId } = req.params;
 
-    if (category) filter.category = category;
-    if (q) filter.$or = [
-      { name: new RegExp(q, "i") },
-      { description: new RegExp(q, "i") }
-    ];
+    const products = await Product.find({ category: categoryId })
+      .populate("category", "name")
+      .sort({ createdAt: -1 });
 
-    // populate category so frontend gets category object instead of id
-    const products = await Product.find(filter).populate("category").sort({ createdAt: -1 });
-    return res.json({ success: true, count: products.length, products });
+    return res.status(200).json({ success: true, count: products.length, data: products });
   } catch (err) {
-    console.error("getProducts error:", err);
+    console.error("getProductsByCategory error:", err);
     return res.status(500).json({ success: false, message: "Server error", error: err.message });
   }
 };
 
 /**
- * Get single product by id
- * GET /api/products/:id
- */
-export const getProductById = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const product = await Product.findById(id).populate("category");
-    if (!product) return res.status(404).json({ success: false, message: "Product not found" });
-    return res.json({ success: true, product });
-  } catch (err) {
-    console.error("getProductById error:", err);
-    return res.status(500).json({ success: false, message: "Server error", error: err.message });
-  }
-};
-
-/**
- * Update a product
- * PUT /api/products/:id
- */
-export const updateProduct = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { name, description, price, image, category } = req.body;
-
-    if (category) {
-      const cat = await Category.findById(category);
-      if (!cat) return res.status(400).json({ success: false, message: "Invalid category ID." });
-    }
-
-    const updated = await Product.findByIdAndUpdate(
-      id,
-      { name, description, price, image, category },
-      { new: true, runValidators: true }
-    ).populate("category");
-
-    if (!updated) return res.status(404).json({ success: false, message: "Product not found" });
-    return res.json({ success: true, product: updated });
-  } catch (err) {
-    console.error("updateProduct error:", err);
-    return res.status(500).json({ success: false, message: "Server error", error: err.message });
-  }
-};
-
-/**
- * Delete product
+ * ✅ Delete product
  * DELETE /api/products/:id
  */
 export const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
     const deleted = await Product.findByIdAndDelete(id);
-    if (!deleted) return res.status(404).json({ success: false, message: "Product not found" });
-    return res.json({ success: true, message: "Product deleted" });
+    if (!deleted) {
+      return res.status(404).json({ success: false, message: "Product not found" });
+    }
+
+    return res.json({ success: true, message: "Product deleted successfully" });
   } catch (err) {
     console.error("deleteProduct error:", err);
     return res.status(500).json({ success: false, message: "Server error", error: err.message });

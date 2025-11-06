@@ -8,11 +8,7 @@ const categorySchema = new mongoose.Schema(
       unique: true, // no duplicate categories
       trim: true
     },
-    description: {
-      type: String,
-      required: false,
-      trim: true
-    }
+   
   },
   { timestamps: true } // auto adds createdAt & updatedAt
 );
