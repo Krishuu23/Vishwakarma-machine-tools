@@ -31,16 +31,22 @@ app.use(cookieParser());
 // 🔐 Proper CORS setup (important for refresh tokens & auth)
 app.use(
   cors({
-    origin: "http://localhost:5173", // your frontend
-    credentials: true, // allow cookies / Authorization headers
+    origin: [
+      "http://localhost:5173",
+      "https://vishwakarma-machine-tools.vercel.app"
+    ],
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type",
-    "Authorization",
-    "Cache-Control",
-    "Pragma",
-    "Expires"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Cache-Control",
+      "Pragma",
+      "Expires"
+    ],
   })
 );
+
 
 // ===============================
 // 🚏 API Routes
