@@ -3,7 +3,7 @@
 import axios from "axios";
 
 // 🔹 Base URL of your backend (change this according to your backend)
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://vmt-backend-vkbk.onrender.com/api";
 
 // ✅ Create a reusable axios instance (optional but clean)
 const api = axios.create({
