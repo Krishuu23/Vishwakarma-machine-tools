@@ -1,7 +1,7 @@
 import express from "express";
 import { protectAdmin } from "../middleware/authMiddleware.js";
 import { addEnquiry, getAllEnquiries ,deleteEnquiry} from "../controllers/enquiryController.js";
-import { getProductsByCategory } from "../../frontend/src/api/userApi.js";
+
 
 const router = express.Router();
 
