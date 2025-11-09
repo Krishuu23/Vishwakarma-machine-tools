@@ -111,7 +111,7 @@ const About = () => {
                           group-hover:before:opacity-55 
                           after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-1/3 after:bg-gradient-to-t after:from-black/70 after:to-transparent">
               <img
-                src="src/assets/about.png"
+                src="/assets/about.png"
                 alt="Mr. Mahesh Panchal, Founder"
                 className="absolute inset-0 w-full h-full object-cover object-center transform transition-transform duration-500 ease-in-out group-hover:scale-103"
               />
@@ -163,7 +163,7 @@ const About = () => {
                           group-hover:before:opacity-55
                           after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-1/3 after:bg-gradient-to-t after:from-black/70 after:to-transparent">
               <img
-                src="src/assets/about2.jpg"
+                src="/assets/about2.jpg"
                 alt="Ms. Juhi Panchal, Co-Founder"
                 className="absolute inset-0 w-full h-full object-cover object-center transform transition-transform duration-500 ease-in-out group-hover:scale-103"
               />

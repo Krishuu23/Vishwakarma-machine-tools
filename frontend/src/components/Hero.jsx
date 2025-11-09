@@ -96,7 +96,7 @@ const Hero = ({onInquiryClick}) => {
       {/* Business-centric Background Image with EXTREMELY Dark Gradient Overlay */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat pointer-events-none animate-bg-zoom"
-        style={{ backgroundImage: `url('src/assets/bg.png')`, backgroundPosition: 'center right 15%' }} // Slightly more to the right, less image dominance
+        style={{ backgroundImage: `url('/assets/bg.png')`, backgroundPosition: 'center right 15%' }} // Slightly more to the right, less image dominance
       >
         {/* Deeper, wider Dark Blue Gradient Overlay, from right to left */}
         {/* Adjusted stops for broader, darker effect across the left */}
