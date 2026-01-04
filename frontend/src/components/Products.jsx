@@ -128,17 +128,18 @@ const Products = ({ onInquiryClick }) => {
               {products.map((product) => (
                 <div
                   key={product._id}
-                  className="snap-start flex-shrink-0 w-[320px] mx-3 bg-surface rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-2 border border-border/70 hover:border-secondary overflow-hidden animate-fade-in-up delay-400"
-                >
-                  <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
+                  className="group relative snap-start flex-shrink-0 w-[320px] mx-3 bg-surface rounded-lg shadow-lg transition-all duration-500 ease-out transform hover:-translate-y-4 hover:shadow-2xl border border-border/70 hover:border-secondary overflow-hidden"
+>
+                
+                  <div className="absolute top-0 left-0 w-full h-48 group-hover:h-full transition-all duration-500 ease-in-out overflow-hidden z-10 bg-white">
                     <img
                       src={product.image || "https://via.placeholder.com/400"}
                       alt={product.name}
-                      className="w-full h-full object-contain object-center transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"></div>
                   </div>
-                  <div className="p-4 flex flex-col justify-between h-[calc(100%-192px)]">
+                  <div className="relative p-4 pt-52 flex flex-col justify-between transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-6">
                     <div>
                       <h4 className="text-xl font-semibold mb-2 text-primary leading-tight">
                         {product.name}
