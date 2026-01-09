@@ -145,7 +145,7 @@ and <span className="text-secondary font-medium"> printing & packaging project c
 >
   <button
     onClick={onInquiryClick}
-    className="inline-flex items-center justify-center bg-secondary text-primary px-7 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all duration-300 ease-in-out shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-secondary focus:ring-offset-primary w-full sm:w-auto group"
+    className="inline-flex items-center justify-center bg-secondary text-primary px-7 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all duration-300 ease-in-out shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none  focus:ring-offset-primary w-full sm:w-auto group"
   >
     Get a Free Consultation
     <svg
@@ -164,7 +164,7 @@ and <span className="text-secondary font-medium"> printing & packaging project c
   <a
     href="/VMT BROCHURE.pdf"
     download="VMT BROCHURE.pdf"
-    className="inline-flex items-center justify-center bg-secondary text-primary px-7 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all duration-300 ease-in-out shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-secondary focus:ring-offset-primary w-full sm:w-auto"
+    className="inline-flex items-center justify-center bg-secondary text-primary px-7 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all duration-300 ease-in-out shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none  focus:ring-offset-primary w-full sm:w-auto"
   >
     Download Brochure
   </a>

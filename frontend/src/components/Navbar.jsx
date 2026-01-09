@@ -53,7 +53,8 @@ const Navbar = ({ onInquiryClick }) => {
         </div>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex space-x-6 items-center">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+
           <NavLink onClick={() => scrollToSection('#home')} sectionId="#home" activeSection={activeSection}>Home</NavLink>
           <NavLink onClick={() => scrollToSection('#about')} sectionId="#about" activeSection={activeSection}>About</NavLink>
           <NavLink onClick={() => scrollToSection('#products')} sectionId="#products" activeSection={activeSection}>Products</NavLink>
@@ -63,8 +64,18 @@ const Navbar = ({ onInquiryClick }) => {
         </div>
 
         {/* Get Quote Button */}
-        <div className="hidden md:flex">
-          <button onClick={onInquiryClick} className="bg-secondary text-primary px-7 py-2 rounded-full font-bold hover:bg-opacity-90 transition-all">
+        <div className="hidden md:flex md:ml-4 lg:ml-8">
+
+          <button onClick={onInquiryClick}className="
+  bg-secondary text-primary 
+  px-5 py-2 
+  md:px-5 md:py-2 
+  lg:px-7 lg:py-2.5
+  rounded-lg lg:rounded-full 
+  text-sm font-semibold
+  hover:bg-opacity-90 transition-all
+"
+>
             Get Quote
           </button>
         </div>
@@ -119,6 +130,7 @@ const NavLink = ({ children, onClick, sectionId, activeSection }) => (
 // Mobile NavLink with scrollspy
 const MobileNavLink = ({ children, onClick, sectionId, activeSection }) => (
   <button
+  onClick={onClick}
     className={`block w-full text-left px-4 py-2 transition bg-transparent border-none cursor-pointer 
   ${activeSection === sectionId ? 'text-secondary font-semibold' : 'text-gray-800'} 
   hover:text-secondary`}
