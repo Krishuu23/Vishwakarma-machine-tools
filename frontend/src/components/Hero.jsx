@@ -139,22 +139,37 @@ and <span className="text-secondary font-medium"> printing & packaging project c
           </motion.p>
 
           {/* Call to Action */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <button onClick={onInquiryClick}
-              href="#contact"
-              className="inline-flex items-center bg-secondary text-primary px-7 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all duration-300 ease-in-out shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-secondary focus:ring-offset-primary group"
-            >
-              Get a Free Consultation
-              <svg className="ml-1.5 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-            </button>
+          <motion.div
+  variants={itemVariants}
+  className="mb-12 flex flex-col sm:flex-row gap-4 sm:gap-6"
+>
+  <button
+    onClick={onInquiryClick}
+    className="inline-flex items-center justify-center bg-secondary text-primary px-7 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all duration-300 ease-in-out shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-secondary focus:ring-offset-primary w-full sm:w-auto group"
+  >
+    Get a Free Consultation
+    <svg
+      className="ml-1.5 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+    >
+      <path
+        fillRule="evenodd"
+        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+        clipRule="evenodd"
+      />
+    </svg>
+  </button>
 
-            <a
-    href="/VMT BROCHURE.pdf" // PDF file in public folder
+  <a
+    href="/VMT BROCHURE.pdf"
     download="VMT BROCHURE.pdf"
-    className="inline-flex items-center ml-8 bg-secondary text-primary px-7 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all duration-300 ease-in-out shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-secondary focus:ring-offset-primary group">
-     Download Brochure
+    className="inline-flex items-center justify-center bg-secondary text-primary px-7 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all duration-300 ease-in-out shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-secondary focus:ring-offset-primary w-full sm:w-auto"
+  >
+    Download Brochure
   </a>
-          </motion.div>
+</motion.div>
+
         </div>
 
         {/* Stats Section - Even more compact */}
