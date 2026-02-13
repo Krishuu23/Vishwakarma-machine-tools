@@ -1,3 +1,5 @@
+// TEST CHANGE - DELETE LATER
+console.log("RENDER DEPLOY CHECK", Date.now());
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -33,7 +35,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://vishwakarma-machine-tools.vercel.app"
+      "https://vmtpackaging.com",
+      "http://vmtpackaging.com"
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
