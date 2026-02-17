@@ -1,6 +1,5 @@
-// 🔥 GIT-DETECT-TEST-12345
-// TEST CHANGE - DELETE LATER
-console.log("RENDER DEPLOY CHECK", Date.now());
+
+//test
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -18,6 +17,8 @@ import adminRoutes from "./routes/adminRoutes.js";
 dotenv.config();
 
 const app = express();
+app.set("trust proxy", 1);
+
 const PORT = process.env.PORT || 5000;
 
 // ===============================
@@ -32,24 +33,41 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // 🔐 Proper CORS setup (important for refresh tokens & auth)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://vmtpackaging.com",
+  "http://vmtpackaging.com",
+  "https://www.vmtpackaging.com",
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://vmtpackaging.com",
-      "http://vmtpackaging.com"
-    ],
+    origin: function (origin, callback) {
+      // allow requests with no origin (Postman, server-to-server)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        console.error("❌ CORS blocked origin:", origin);
+        return callback(new Error("CORS not allowed"));
+      }
+    },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: [
       "Content-Type",
       "Authorization",
       "Cache-Control",
       "Pragma",
-      "Expires"
+      "Expires",
     ],
   })
 );
+
+// ✅ IMPORTANT: handle preflight
+app.options("*", cors());
+
 
 
 // ===============================
